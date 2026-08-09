@@ -96,3 +96,18 @@ body[data-theme="light"] .blog-intro,.light-page .blog-intro{background:#fff}
 .site-header>.button,.site-header>.theme-toggle{flex:0 0 auto}
 @media(max-width:760px){.site-header{min-height:72px;padding:13px 0;gap:12px}.wordmark{font-size:13px;gap:7px}.wordmark span{width:24px;height:24px}.nav{margin-left:auto;gap:10px;font-size:10px}.theme-toggle{padding:8px!important;min-width:32px;justify-content:center}.theme-toggle .theme-label{display:none}}
 @media(max-width:420px){.site-header{gap:8px}.nav{gap:8px;font-size:9px}.wordmark{font-size:12px}.wordmark span{width:22px;height:22px;font-size:9px}}
+
+/* Shared header component: one vertical rhythm and theme-safe contrast. */
+.site-header{display:flex;align-items:center;justify-content:space-between}
+.site-header>.wordmark,.site-header>.nav,.site-header>.theme-toggle,.site-header>.button{align-self:center}
+.wordmark{line-height:1;min-height:28px}
+.nav{align-items:center}
+.nav a{display:inline-flex;align-items:center;line-height:1;min-height:28px}
+.theme-toggle{height:44px;line-height:1}
+body[data-theme="light"] .nav,.light-page .nav{color:#3f3f3f}
+body[data-theme="light"] .nav a:hover,body[data-theme="light"] .nav .active,.light-page .nav a:hover,.light-page .nav .active{color:#111}
+body[data-theme="light"] .theme-toggle{color:#242424;border-color:#c9c9c9;background:#fff}
+body[data-theme="light"] .theme-toggle:hover{background:#242424;color:#fff;border-color:#242424}
+body[data-theme="light"] .site-header,.light-page .site-header{border-color:#dedede}
+@media(max-width:760px){.theme-toggle{height:36px}.nav a{min-height:24px}.wordmark{min-height:24px}}
+@media(max-width:420px){.theme-toggle{height:32px}.nav a{min-height:22px}}

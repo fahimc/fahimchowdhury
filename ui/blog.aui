@@ -1,6 +1,6 @@
-Page FahimWriting
+Page FahimBlog
   Stack gap=lg
-    Heading level=1 "Writing"
+    Heading level=1 "Blog"
     Text "A notebook for ideas about AI, product, and the small choices that make new technology feel human."
     Heading level=2 "The quiet power of making AI less impressive"
     Text "The most valuable AI often lowers the effort between a person and a good decision."
