@@ -111,3 +111,9 @@ body[data-theme="light"] .theme-toggle:hover{background:#242424;color:#fff;borde
 body[data-theme="light"] .site-header,.light-page .site-header{border-color:#dedede}
 @media(max-width:760px){.theme-toggle{height:36px}.nav a{min-height:24px}.wordmark{min-height:24px}}
 @media(max-width:420px){.theme-toggle{height:32px}.nav a{min-height:22px}}
+
+/* Hero viewport fit */
+.hero-copy,.hero-visual{min-width:0;max-width:100%}
+.featured-title-link{display:block}.featured-title-link h2{transition:color .2s ease}.featured-title-link:hover h2{color:var(--blue)}
+@media(max-width:760px){.hero{width:100%;max-width:100%;padding:54px 0 72px;overflow:hidden}.hero h1{font-size:clamp(52px,14vw,69px);max-width:100%;overflow-wrap:normal}.hero-intro{max-width:100%}.hero-actions{flex-wrap:wrap;gap:18px}.hero-visual{width:100%;max-width:100%;height:auto;min-height:220px;aspect-ratio:1.55;clip-path:polygon(3% 0,100% 0,100% 95%,0 100%)}}
+@media(max-width:420px){.hero{padding-top:42px}.hero h1{font-size:52px;letter-spacing:-.075em}.hero-intro{font-size:15px}.hero-actions{gap:14px}.hero-actions .button{padding:13px 14px}.hero-visual{min-height:190px;aspect-ratio:1.4}}
