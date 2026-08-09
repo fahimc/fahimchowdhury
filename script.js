@@ -1,7 +1,8 @@
 const isWritingPage = /blog\.html|article-/.test(window.location.pathname);
 if (isWritingPage) document.body.classList.add('light-page');
 
-const savedTheme = localStorage.getItem('fahim-theme');
+const themeStorageKey = isWritingPage ? 'fahim-writing-theme' : 'fahim-theme';
+const savedTheme = localStorage.getItem(themeStorageKey);
 const defaultTheme = document.body.classList.contains('light-page') ? 'light' : 'dark';
 document.body.dataset.theme = savedTheme || defaultTheme;
 
@@ -23,7 +24,7 @@ if (header && headerButton) {
   updateThemeToggle();
   toggle.addEventListener('click', () => {
     document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('fahim-theme', document.body.dataset.theme);
+    localStorage.setItem(themeStorageKey, document.body.dataset.theme);
     updateThemeToggle();
   });
 }
