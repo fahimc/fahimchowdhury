@@ -88,3 +88,11 @@ body[data-theme="dark"] .article-copy code{background:#1a1d22}body[data-theme="d
 body[data-theme="light"] .article-dek,body[data-theme="light"] .article-copy,.light-page .article-dek,.light-page .article-copy{color:#242424}
 body[data-theme="light"] .site-header,.light-page .site-header{background:#fff}
 body[data-theme="light"] .blog-intro,.light-page .blog-intro{background:#fff}
+
+/* Header alignment and overflow guardrails */
+.site-header{height:auto;min-height:88px;padding:16px 0;gap:24px;align-items:center}
+.wordmark{flex:0 0 auto;white-space:nowrap}
+.nav{flex:0 1 auto;min-width:0;white-space:nowrap}
+.site-header>.button,.site-header>.theme-toggle{flex:0 0 auto}
+@media(max-width:760px){.site-header{min-height:72px;padding:13px 0;gap:12px}.wordmark{font-size:13px;gap:7px}.wordmark span{width:24px;height:24px}.nav{margin-left:auto;gap:10px;font-size:10px}.theme-toggle{padding:8px!important;min-width:32px;justify-content:center}.theme-toggle .theme-label{display:none}}
+@media(max-width:420px){.site-header{gap:8px}.nav{gap:8px;font-size:9px}.wordmark{font-size:12px}.wordmark span{width:22px;height:22px;font-size:9px}}
