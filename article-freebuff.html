@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fahim Chowdhury reviews FreeBuff, the free AI coding agent, and explains its multi-agent architecture, economics, data trade-offs, and ideal use cases.">
+  <title>FreeBuff: a serious architecture at zero dollars | Fahim Chowdhury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
+</head>
+<body class="freebuff-article">
+  <header class="site-header shell"><a class="wordmark" href="index.html"><span>FC</span> fahimchowdhury</a><nav class="nav" aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#approach">Approach</a><a class="active" href="blog.html">Writing <span class="arrow">↗</span></a></nav><a class="button button-small button-dark" href="mailto:hello@fahimchowdhury.com">Let's talk <span>↗</span></a></header>
+  <main class="article-shell article-shell-wide">
+    <a class="back-link" href="blog.html">← Back to all writing</a>
+    <p class="post-type">Tool review · 10 min read</p>
+    <h1>FreeBuff proves free AI coding can have serious architecture</h1>
+    <p class="article-dek">The price is the hook. The real story is a well-shaped multi-agent system that spends intelligence where the work needs it.</p>
+    <div class="article-byline"><span class="avatar">FC</span> Fahim Chowdhury <span>·</span> August 09, 2026</div>
+    <figure class="article-image"><img src="assets/freebuff-agent-architecture.webp" alt="A visualisation of a coordinator AI routing work to nine specialist agents" width="1536" height="921"><figcaption>One coordinator, specialist workers, and a verification loop. Generated for this essay.</figcaption></figure>
+    <article class="article-copy">
+      <p class="article-lead">I love tools that make a complicated capability feel ordinary. <a href="https://freebuff.com/" target="_blank" rel="noreferrer">FreeBuff</a> does that with agentic software development: install one command, open a project, describe an outcome, and let an AI system inspect, edit, test, and review the work.</p>
+      <p>That experience is remarkable before you reach the headline: the core product costs nothing and asks for no API key. FreeBuff calls itself a free, ad-supported coding agent built on the open-source Codebuff platform. After reviewing its product material, source repository, and current terms, my view is that it deserves attention—not because “free” magically removes trade-offs, but because the technical and economic architecture fit together unusually well.</p>
+
+      <h2>What FreeBuff actually is</h2>
+      <p>FreeBuff is a terminal-first coding agent. Run <code>npm install -g freebuff</code>, move into an existing repository, and launch <code>freebuff</code>. It maps the project, finds relevant files, plans changes, edits code, runs appropriate checks, and can review the resulting diff. Built-in web research and browser use widen the loop beyond text generation.</p>
+      <p>This distinction matters: it is not autocomplete and it is not simply a chat window beside your editor. It operates across the software-delivery loop while keeping the developer in the terminal and inside a permission boundary.</p>
+
+      <aside class="takeaway"><span>My take</span><p>FreeBuff’s strongest product decision is decomposition. It treats coding as a system of jobs that need different context, tools, trust, and model economics—not as one heroic prompt.</p></aside>
+
+      <h2>The architecture: an orchestrator, not a monolith</h2>
+      <p>The public Codebuff repository describes a coordinator that delegates work to specialised agents. FreeBuff’s own engineering overview lists nine. The exact model roster can change, but the durable architectural idea is role separation.</p>
+    </article>
+
+    <section class="architecture-stage" aria-label="FreeBuff multi-agent architecture diagram">
+      <div class="architecture-input"><span>01 / Intent</span><b>Your request + repository context</b></div>
+      <div class="architecture-line"></div>
+      <div class="architecture-core"><small>02 / Route</small><strong>Coordinator</strong><span>Chooses the right worker, context and tool path</span></div>
+      <div class="architecture-agents">
+        <div><b>File picker</b><span>Ranks relevant files from a local code map</span></div><div><b>Project scout</b><span>Keeps structure and recent signals warm</span></div><div><b>Researcher</b><span>Finds external facts with citations</span></div><div><b>Thinker</b><span>Handles deeper planning and reasoning</span></div><div><b>Shell runner</b><span>Executes commands within permissions</span></div><div><b>Test runner</b><span>Detects and runs focused test suites</span></div><div><b>Browser use</b><span>Checks the rendered product in Chromium</span></div><div><b>Code reviewer</b><span>Inspects diffs for regressions and risk</span></div><div><b>Git curator</b><span>Shapes commits and delivery</span></div>
+      </div>
+      <div class="architecture-output"><span>03 / Verify</span><b>Edit → test → review → deliver</b></div>
+    </section>
+
+    <article class="article-copy">
+      <p>The sequence begins with context. A file-picker uses a project map to identify likely files instead of feeding the whole repository to every model call. A project-scout maintains structural context and recent signals. The coordinator can then send planning to a deeper reasoning path, implementation to an editing path, commands to a permission-aware shell runner, and validation to test, browser, and review specialists.</p>
+      <p>There are four good systems ideas here:</p>
+      <ol class="article-list"><li><strong>Context is scoped.</strong> A reviewer needs the diff, not every browser log. Smaller, relevant context can reduce noise and latency.</li><li><strong>Models are routed by task.</strong> File discovery can use a fast economical model; difficult reasoning can justify a stronger one.</li><li><strong>Trust boundaries are explicit.</strong> Shell execution can enforce approvals independently of the conversational coordinator.</li><li><strong>Verification is part of the loop.</strong> Tests, browser checks, and diff review are workers in the system rather than hopeful instructions at the end of a prompt.</li></ol>
+      <p>This is the part the wider AI community should study. Agent quality is not only a model question. It is an architecture question: what gets delegated, what context moves with it, what tools are allowed, and what evidence closes the loop?</p>
+
+      <h2>How can it be free?</h2>
+      <p>The direct answer is advertising. FreeBuff says small text ads from developer-tool sponsors appear between agent turns. The company says both views and click-throughs support the service; generated code is not interrupted by pop-ups or injected promotions. The commercial upgrade path is Codebuff Pro for organisations that want an ad-free experience, priority models, and longer context.</p>
+      <p>The technical architecture helps the business architecture. Routing file search to cheaper, fast models and reserving premium reasoning for the moments that need it reduces average inference cost. Open-weight model competition has also pushed capable coding intelligence down the cost curve. Ads fund the remaining usage while a paid product serves teams with stronger requirements.</p>
+      <blockquote>“Free” here is not the absence of a business model. It is a deliberate exchange: sponsored attention and product constraints subsidise model inference.</blockquote>
+      <p>That exchange deserves clear eyes. FreeBuff’s current notice says prompts may be analysed to personalise ads, while separate uploads and connected repositories are not provided to advertising providers. It also says models or features explicitly labelled for AI training may use submissions for that purpose. Current terms limit free access to individual, human-directed use through official interfaces. If you are working with sensitive client code, regulated data, or strict IP policy, read the latest privacy and terms pages and make an organisational decision rather than assuming “free” means consequence-free.</p>
+
+      <h2>Where I think it shines</h2>
+      <p>For learners, independent developers, open-source contributors, and teams exploring agentic workflows, FreeBuff removes the worst adoption friction: subscription maths, API keys, and provider setup. Knowledge files let a project state its conventions; file and agent mentions give a developer more steering when needed; history and command modes make the terminal experience feel considered rather than improvised.</p>
+      <p>I am equally impressed by what the design teaches. The tool makes sophisticated orchestration approachable. A developer does not need to manually select nine workers—the coordinator turns the system into one coherent interaction. That is exactly what good AI product design should do: hide mechanical complexity without hiding consequential choices.</p>
+
+      <h2>The honest caveats</h2>
+      <ul class="article-list"><li><strong>Availability and limits vary.</strong> Model access can depend on geography, VPN use, and current service policy; a limited mode may use a smaller model and session limits.</li><li><strong>The model menu is a moving target.</strong> Treat named models as current product configuration, not permanent architecture.</li><li><strong>New products move quickly.</strong> The open repository has active issues, and stability will matter as the user base grows.</li><li><strong>Free is best evaluated with your data policy.</strong> Review labels, privacy terms, and permitted use before putting proprietary work into any cloud-backed coding agent.</li></ul>
+
+      <h2>My verdict</h2>
+      <p>FreeBuff is an amazing contribution to the developer community because it makes a serious agent loop available to people who might otherwise sit outside it. More importantly, it demonstrates a sustainable product thesis: specialised models, disciplined context, built-in verification, and an ad-funded tier can turn frontier capability into broad access.</p>
+      <p>I would recommend trying it on a non-sensitive repository, giving it a bounded task, and watching how it gathers context and verifies the change. Do not judge only the code it writes. Study the system around the model. That is where the most transferable lesson lives.</p>
+      <p class="article-cta"><a class="button button-blue" href="https://freebuff.com/" target="_blank" rel="noreferrer">Explore FreeBuff <span>↗</span></a><a class="text-link" href="https://github.com/CodebuffAI/codebuff" target="_blank" rel="noreferrer">Read the source <span>↗</span></a></p>
+
+      <div class="source-note"><h2>Sources & further reading</h2><p>Research checked August 09, 2026. Product details can change.</p><ul><li><a href="https://freebuff.com/blog/freebuff-launch" target="_blank" rel="noreferrer">FreeBuff launch and business model</a></li><li><a href="https://github.com/CodebuffAI/codebuff" target="_blank" rel="noreferrer">Codebuff / FreeBuff open-source repository</a></li><li><a href="https://freebuff.com/blog/freebuff-subagents-deep-dive" target="_blank" rel="noreferrer">FreeBuff’s subagent architecture overview</a></li><li><a href="https://freebuff.com/terms-of-service" target="_blank" rel="noreferrer">Current terms of service</a></li><li><a href="https://freebuff.com/privacy-policy" target="_blank" rel="noreferrer">Current privacy policy</a></li></ul></div>
+    </article>
+  </main>
+  <footer class="footer shell"><a class="wordmark" href="index.html"><span>FC</span> fahimchowdhury</a><p>Thoughtful AI for the real world.</p><div class="footer-links"><a href="blog.html">More writing ↗</a><a href="mailto:hello@fahimchowdhury.com">Email ↗</a></div><small>© <span data-year></span> Fahim Chowdhury</small></footer>
+  <script src="script.js"></script>
+</body></html>

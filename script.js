@@ -30,6 +30,34 @@ if (header && headerButton) {
 
 document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
+const revealTargets = document.querySelectorAll('.section, .work-item, .writing-card, .post-row, .architecture-stage');
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  revealTargets.forEach((el) => el.classList.add('reveal-ready'));
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach((el) => revealObserver.observe(el));
+}
+
+const parallax = document.querySelector('[data-parallax]');
+if (parallax && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  parallax.addEventListener('pointermove', (event) => {
+    const rect = parallax.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
+    parallax.style.setProperty('--tilt-x', `${-y}deg`);
+    parallax.style.setProperty('--tilt-y', `${x}deg`);
+  });
+  parallax.addEventListener('pointerleave', () => {
+    parallax.style.setProperty('--tilt-x', '0deg');
+    parallax.style.setProperty('--tilt-y', '0deg');
+  });
+}
+
 const form = document.querySelector('#subscribe-form');
 if (form) {
   form.addEventListener('submit', (event) => {
