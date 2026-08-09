@@ -1,0 +1,7 @@
+Page FahimHome
+  Stack gap=lg
+    Heading level=1 "Make AI feel obvious."
+    Text "I help ambitious teams turn messy, high-value problems into AI products people actually want to use."
+    Button variant=primary action=work "See selected work"
+    Heading level=2 "AI is not the product. The possibility is."
+    Text "Technology is only useful when it changes what a person can do."
