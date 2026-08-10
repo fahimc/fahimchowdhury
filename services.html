@@ -28,9 +28,10 @@
         <div class="contact-stage__intro">
           <h2>Let’s give the<br>opportunity a <em>shape.</em></h2>
           <p>Share the outcome you want, what you have tried, and where the uncertainty sits. I’ll help define the most useful next step.</p>
-          <a class="contact-stage__email" href="mailto:fahim.chowdhury1985@gmail.com">fahim.chowdhury1985@gmail.com</a>
+          <button class="contact-stage__email" type="button" data-copy-email="fahim.chowdhury1985@gmail.com" aria-describedby="services-copy-status">fahim.chowdhury1985@gmail.com <span>Copy ↗</span></button>
+          <span class="contact-stage__copy-status" id="services-copy-status" data-copy-status aria-live="polite"></span>
         </div>
-        <form class="contact-form" name="services-enquiry" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form class="contact-form" name="services-enquiry" method="POST" action="/thanks.html" data-netlify="true" data-async-form data-netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="services-enquiry">
           <input type="hidden" name="enquiry-type" value="AI services">
           <p class="netlify-honeypot"><label>Do not fill this out if you are human: <input name="bot-field" type="text" tabindex="-1" autocomplete="off"></label></p>
@@ -45,6 +46,6 @@
       </div>
     </section>
   </main>
-  <footer class="c-footer c-shell"><span>© <span data-year></span> Fahim Chowdhury · Thoughtful AI for the real world.</span><div class="c-footer__links"><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="mailto:fahim.chowdhury1985@gmail.com">Email ↗</a></div></footer>
+  <footer class="c-footer c-shell"><span>© <span data-year></span> Fahim Chowdhury · Thoughtful AI for the real world.</span><div class="c-footer__links"><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact ↗</a></div></footer>
   <script src="script.js"></script>
 </body></html>

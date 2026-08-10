@@ -143,7 +143,7 @@ if (progress) {
   updateProgress();
 }
 
-const netlifyForms = document.querySelectorAll('form[data-netlify="true"]');
+const netlifyForms = document.querySelectorAll('form[data-async-form]');
 netlifyForms.forEach((form) => {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -174,6 +174,35 @@ netlifyForms.forEach((form) => {
     } finally {
       submitButton.disabled = false;
       submitButton.innerHTML = originalLabel;
+    }
+  });
+});
+
+const copyText = async (text) => {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const fallback = document.createElement('textarea');
+  fallback.value = text;
+  fallback.setAttribute('readonly', '');
+  fallback.style.position = 'fixed';
+  fallback.style.opacity = '0';
+  document.body.appendChild(fallback);
+  fallback.select();
+  const copied = document.execCommand('copy');
+  fallback.remove();
+  if (!copied) throw new Error('Copy failed');
+};
+
+document.querySelectorAll('[data-copy-email]').forEach((button) => {
+  button.addEventListener('click', async () => {
+    const status = button.parentElement.querySelector('[data-copy-status]');
+    try {
+      await copyText(button.dataset.copyEmail);
+      status.textContent = 'Email address copied.';
+    } catch {
+      status.textContent = `Copy this address: ${button.dataset.copyEmail}`;
     }
   });
 });
