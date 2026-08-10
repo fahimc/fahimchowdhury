@@ -20,7 +20,7 @@
     <nav class="nav c-nav" aria-label="Main navigation">
       <a href="services.html">Services</a><a href="#work">Work</a><a href="blog.html">Blog</a>
     </nav>
-    <a class="button c-button c-button--primary" href="mailto:hello@fahimchowdhury.com">Start a project <span>↗</span></a>
+    <a class="button c-button c-button--primary" href="#contact">Start a project <span>↗</span></a>
   </header>
 
   <main>
@@ -92,10 +92,29 @@
       </div>
     </section>
 
-    <section class="c-section c-shell" id="contact"><div class="contact-stage reveal"><h2>Have a problem<br>worth making <em>possible?</em></h2><div><p>Bring the messy brief, the bold idea, or the AI initiative that needs a clearer shape.</p><a class="c-button" href="mailto:hello@fahimchowdhury.com">Start a conversation <span>↗</span></a></div></div></section>
+    <section class="c-section c-shell" id="contact">
+      <div class="contact-stage reveal">
+        <div class="contact-stage__intro">
+          <h2>Have a problem<br>worth making <em>possible?</em></h2>
+          <p>Bring the messy brief, the bold idea, or the AI initiative that needs a clearer shape.</p>
+          <a class="contact-stage__email" href="mailto:fahim.chowdhury1985@gmail.com">fahim.chowdhury1985@gmail.com</a>
+        </div>
+        <form class="contact-form" name="project-enquiry" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="project-enquiry">
+          <p class="netlify-honeypot"><label>Do not fill this out if you are human: <input name="bot-field" type="text" tabindex="-1" autocomplete="off"></label></p>
+          <div class="contact-form__row">
+            <label><span>Your name</span><input name="name" type="text" autocomplete="name" required></label>
+            <label><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label><span>Organisation</span><input name="organisation" type="text" autocomplete="organization"></label>
+          <label><span>What are you trying to make possible?</span><textarea name="message" rows="4" required></textarea></label>
+          <div class="contact-form__submit"><button class="c-button" type="submit">Send enquiry <span>↗</span></button><p class="form-note" data-form-status aria-live="polite"></p></div>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer class="c-footer c-shell"><span>© <span data-year></span> Fahim Chowdhury · Thoughtful AI for the real world.</span><div class="c-footer__links"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/fahimc" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:hello@fahimchowdhury.com">Email ↗</a></div></footer>
+  <footer class="c-footer c-shell"><span>© <span data-year></span> Fahim Chowdhury · Thoughtful AI for the real world.</span><div class="c-footer__links"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/fahimc" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:fahim.chowdhury1985@gmail.com">Email ↗</a></div></footer>
   <script src="script.js"></script>
 </body>
 </html>

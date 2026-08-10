@@ -143,13 +143,37 @@ if (progress) {
   updateProgress();
 }
 
-const form = document.querySelector('#subscribe-form');
-if (form) {
-  form.addEventListener('submit', (event) => {
+const netlifyForms = document.querySelectorAll('form[data-netlify="true"]');
+netlifyForms.forEach((form) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const note = form.querySelector('.form-note');
-    const input = form.querySelector('input');
-    note.textContent = `You're on the list. Watch ${input.value} for the next note.`;
-    input.value = '';
+    const status = form.querySelector('[data-form-status]');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalLabel = submitButton.innerHTML;
+    const formData = new FormData(form);
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
+    status.textContent = '';
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      const isNewsletter = form.getAttribute('name') === 'newsletter';
+      status.textContent = isNewsletter
+        ? "You're on the list. The next note will land in your inbox."
+        : "Thanks — your message is with me. I'll be in touch soon.";
+      status.dataset.state = 'success';
+      form.reset();
+    } catch {
+      status.textContent = 'Something went wrong. Please email fahim.chowdhury1985@gmail.com.';
+      status.dataset.state = 'error';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalLabel;
+    }
   });
-}
+});

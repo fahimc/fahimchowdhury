@@ -11,7 +11,7 @@ Page FahimServices
       Badge "AI services · strategy to scale"
       Heading level=1 "Make AI useful."
       Text "Focused advisory and delivery for organisations that want AI to change an outcome."
-      Link href="mailto:hello@fahimchowdhury.com" "Discuss a brief"
+      Link href="#contact" "Discuss a brief"
     Section
       ServiceDetail number="01" title="AI opportunity & strategy" summary="Connect business priorities, user friction, data reality, and organisational readiness." output="Roadmap + operating model"
       ServiceDetail number="02" title="Agentic product design" summary="Define agent roles, context, tools, controls, and evidence around a useful experience." output="Product + agent architecture"

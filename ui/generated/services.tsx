@@ -19,7 +19,7 @@ export function FahimServices({ data, onAction }: { data: any; onAction: (name: 
           <Badge>AI services · strategy to scale</Badge>
           <Heading level={1}>Make AI useful.</Heading>
           <Text>Focused advisory and delivery for organisations that want AI to change an outcome.</Text>
-          <Link href="mailto:hello@fahimchowdhury.com">Discuss a brief</Link>
+          <Link href="#contact">Discuss a brief</Link>
         </Section>
         <Section>
           <ServiceDetail number="01" title="AI opportunity & strategy" summary="Connect business priorities, user friction, data reality, and organisational readiness." output="Roadmap + operating model" />
