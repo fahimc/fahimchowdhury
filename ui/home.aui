@@ -17,16 +17,22 @@ def InsightCard type title href
     Heading level=3 $title
     Link href=$href "Read insight"
 
+def InteractiveRobot asset
+  Card
+    Image src=$asset alt="Interactive humanoid AI robot"
+    Image src=$asset alt="Robot head motion layer"
+    Badge "Move to make eye contact · mouse or touch"
+
 Page FahimPortfolio
   Stack gap=lg
     Section
-      Badge "AI strategist · systems designer · London"
-      Heading level=1 "AI that earns its place."
-      Text "I turn complex opportunities into AI products, agent systems, and intelligent workflows people can trust."
+      Badge "AI strategist · agent architect · London"
+      Heading level=1 "Intelligence with intent."
+      Text "I architect AI products, agent systems, and intelligent workflows that turn frontier capability into trusted, measurable advantage."
       Row gap=md
         Link href="#work" "Explore selected work"
-        Link href="services.html" "View services"
-      Image src="assets/ai-systems-hero.webp" alt="Orchestrated AI systems"
+        Link href="services.html" "See how I can help"
+      InteractiveRobot asset="assets/robot-hero-v2.webp"
     Section
       Heading level=2 "From possibility to practice."
       Grid columns=2 gap=md

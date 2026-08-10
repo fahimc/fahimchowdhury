@@ -31,19 +31,29 @@ function InsightCard({ type, title, href }: any) {
   )
 }
 
+function InteractiveRobot({ asset }: any) {
+  return (
+    <Card>
+      <Image src={asset} alt="Interactive humanoid AI robot" />
+      <Image src={asset} alt="Robot head motion layer" />
+      <Badge>Move to make eye contact · mouse or touch</Badge>
+    </Card>
+  )
+}
+
 export function FahimPortfolio({ data, onAction }: { data: any; onAction: (name: string) => void }) {
   return (
     <Page>
       <Stack gap="lg">
         <Section>
-          <Badge>AI strategist · systems designer · London</Badge>
-          <Heading level={1}>AI that earns its place.</Heading>
-          <Text>I turn complex opportunities into AI products, agent systems, and intelligent workflows people can trust.</Text>
+          <Badge>AI strategist · agent architect · London</Badge>
+          <Heading level={1}>Intelligence with intent.</Heading>
+          <Text>I architect AI products, agent systems, and intelligent workflows that turn frontier capability into trusted, measurable advantage.</Text>
           <Row gap="md">
             <Link href="#work">Explore selected work</Link>
-            <Link href="services.html">View services</Link>
+            <Link href="services.html">See how I can help</Link>
           </Row>
-          <Image src="assets/ai-systems-hero.webp" alt="Orchestrated AI systems" />
+          <InteractiveRobot asset="assets/robot-hero-v2.webp" />
         </Section>
         <Section>
           <Heading level={2}>From possibility to practice.</Heading>

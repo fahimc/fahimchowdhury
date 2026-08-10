@@ -46,18 +46,72 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   revealTargets.forEach((el) => el.classList.add('is-visible'));
 }
 
-const parallax = document.querySelector('[data-parallax]');
-if (parallax && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  parallax.addEventListener('pointermove', (event) => {
-    const rect = parallax.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
-    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
-    parallax.style.setProperty('--tilt-x', `${-y}deg`);
-    parallax.style.setProperty('--tilt-y', `${x}deg`);
+const robotHero = document.querySelector('[data-robot-hero]');
+const robotStage = robotHero?.querySelector('[data-robot-stage]');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (robotHero && robotStage && !reducedMotion) {
+  const current = { x: 0, y: 0 };
+  const target = { x: 0, y: 0 };
+  let motionFrame;
+  let touchReset;
+
+  const renderRobot = () => {
+    current.x += (target.x - current.x) * 0.14;
+    current.y += (target.y - current.y) * 0.14;
+    robotHero.style.setProperty('--head-x', `${current.x * 18}px`);
+    robotHero.style.setProperty('--head-y', `${current.y * 10}px`);
+    robotHero.style.setProperty('--head-ry', `${current.x * 9}deg`);
+    robotHero.style.setProperty('--head-rx', `${current.y * -6}deg`);
+    robotHero.style.setProperty('--head-rz', `${current.x * -1.5}deg`);
+    robotHero.style.setProperty('--hero-glow-x', `${50 + current.x * 28}%`);
+    robotHero.style.setProperty('--hero-glow-y', `${45 + current.y * 22}%`);
+    if (Math.abs(target.x - current.x) > 0.002 || Math.abs(target.y - current.y) > 0.002) {
+      motionFrame = requestAnimationFrame(renderRobot);
+    } else {
+      motionFrame = undefined;
+    }
+  };
+
+  const queueRobot = () => {
+    if (!motionFrame) motionFrame = requestAnimationFrame(renderRobot);
+  };
+
+  const lookAt = (clientX, clientY) => {
+    const rect = robotHero.getBoundingClientRect();
+    target.x = Math.max(-1, Math.min(1, ((clientX - rect.left) / rect.width - 0.5) * 2));
+    target.y = Math.max(-1, Math.min(1, ((clientY - rect.top) / rect.height - 0.5) * 2));
+    queueRobot();
+  };
+
+  const resetRobot = () => {
+    target.x = 0;
+    target.y = 0;
+    queueRobot();
+  };
+
+  robotHero.addEventListener('pointermove', (event) => {
+    if (event.pointerType !== 'touch') lookAt(event.clientX, event.clientY);
+  }, { passive: true });
+  robotHero.addEventListener('pointerleave', (event) => {
+    if (event.pointerType !== 'touch') resetRobot();
   });
-  parallax.addEventListener('pointerleave', () => {
-    parallax.style.setProperty('--tilt-x', '0deg');
-    parallax.style.setProperty('--tilt-y', '0deg');
+  robotHero.addEventListener('touchmove', (event) => {
+    const touch = event.touches[0];
+    if (touch) lookAt(touch.clientX, touch.clientY);
+  }, { passive: true });
+  robotHero.addEventListener('touchend', () => {
+    clearTimeout(touchReset);
+    touchReset = setTimeout(resetRobot, 700);
+  }, { passive: true });
+  robotStage.addEventListener('keydown', (event) => {
+    const movement = 0.25;
+    if (event.key === 'ArrowLeft') target.x = Math.max(-1, target.x - movement);
+    else if (event.key === 'ArrowRight') target.x = Math.min(1, target.x + movement);
+    else if (event.key === 'ArrowUp') target.y = Math.max(-1, target.y - movement);
+    else if (event.key === 'ArrowDown') target.y = Math.min(1, target.y + movement);
+    else return;
+    event.preventDefault();
+    queueRobot();
   });
 }
 
