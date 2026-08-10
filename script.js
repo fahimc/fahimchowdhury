@@ -51,19 +51,18 @@ const robotStage = robotHero?.querySelector('[data-robot-stage]');
 const robotSprites = robotHero ? [...robotHero.querySelectorAll('[data-robot-sprite]')] : [];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (robotHero && robotStage && robotSprites.length === 2 && !reducedMotion) {
-  const positions = ['0%', '33.3333%', '66.6667%', '100%'];
-  const keyboardLook = { x: 0, y: -0.12 };
+  const positions = ['0%', '50%', '100%'];
+  const keyboardLook = { x: 0, y: 0 };
   let activeSprite = 0;
-  let currentFrame = '2:1';
+  let currentFrame = '1:1';
   let pendingLook;
   let directionFrame;
   let touchReset;
 
   const axisFrame = (value) => {
-    if (value < -0.5) return 0;
-    if (value < 0) return 1;
-    if (value < 0.5) return 2;
-    return 3;
+    if (value < -0.3333) return 0;
+    if (value < 0.3333) return 1;
+    return 2;
   };
 
   const renderDirection = () => {
@@ -105,7 +104,7 @@ if (robotHero && robotStage && robotSprites.length === 2 && !reducedMotion) {
     if (event.pointerType !== 'touch') lookAt(event.clientX, event.clientY);
   }, { passive: true });
   robotHero.addEventListener('pointerleave', (event) => {
-    if (event.pointerType !== 'touch') queueDirection(0.12, -0.12);
+    if (event.pointerType !== 'touch') queueDirection(0, 0);
   });
   robotHero.addEventListener('touchmove', (event) => {
     const touch = event.touches[0];
@@ -113,7 +112,7 @@ if (robotHero && robotStage && robotSprites.length === 2 && !reducedMotion) {
   }, { passive: true });
   robotHero.addEventListener('touchend', () => {
     clearTimeout(touchReset);
-    touchReset = setTimeout(() => queueDirection(0.12, -0.12), 700);
+    touchReset = setTimeout(() => queueDirection(0, 0), 700);
   }, { passive: true });
   robotStage.addEventListener('keydown', (event) => {
     const movement = 0.34;

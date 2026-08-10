@@ -35,7 +35,7 @@ function DirectionalRobot({ asset }: any) {
   return (
     <Card>
       <Image src={asset} alt="Futuristic robot directional sprite atlas" />
-      <Badge>16 rendered gaze poses · mouse or touch</Badge>
+      <Badge>9 high-resolution gaze poses · mouse or touch</Badge>
     </Card>
   )
 }
@@ -52,7 +52,7 @@ export function FahimPortfolio({ data, onAction }: { data: any; onAction: (name:
             <Link href="#work">Explore selected work</Link>
             <Link href="services.html">See how I can help</Link>
           </Row>
-          <DirectionalRobot asset="assets/futuristic-robot-atlas.webp" />
+          <DirectionalRobot asset="assets/futuristic-robot-atlas-hd.webp" />
         </Section>
         <Section>
           <Heading level={2}>From possibility to practice.</Heading>

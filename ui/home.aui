@@ -20,7 +20,7 @@ def InsightCard type title href
 def DirectionalRobot asset
   Card
     Image src=$asset alt="Futuristic robot directional sprite atlas"
-    Badge "16 rendered gaze poses · mouse or touch"
+    Badge "9 high-resolution gaze poses · mouse or touch"
 
 Page FahimPortfolio
   Stack gap=lg
@@ -31,7 +31,7 @@ Page FahimPortfolio
       Row gap=md
         Link href="#work" "Explore selected work"
         Link href="services.html" "See how I can help"
-      DirectionalRobot asset="assets/futuristic-robot-atlas.webp"
+      DirectionalRobot asset="assets/futuristic-robot-atlas-hd.webp"
     Section
       Heading level=2 "From possibility to practice."
       Grid columns=2 gap=md
