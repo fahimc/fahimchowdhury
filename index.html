@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/futuristic-robot-atlas.webp" type="image/webp">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="components.css">
 </head>
@@ -38,10 +39,12 @@
         <div class="robot-hero__stage reveal" data-robot-stage role="img" aria-label="An intelligent humanoid robot whose head follows mouse or finger movement" tabindex="0">
           <div class="robot-hero__orbit robot-hero__orbit--one" aria-hidden="true"></div>
           <div class="robot-hero__orbit robot-hero__orbit--two" aria-hidden="true"></div>
-          <div class="robot-hero__body" aria-hidden="true"><img src="assets/robot-hero-v2.webp" alt="" width="1260" height="1536" fetchpriority="high"></div>
-          <div class="robot-hero__head" data-robot-head aria-hidden="true"><img src="assets/robot-hero-v2.webp" alt="" width="1260" height="1536" fetchpriority="high"></div>
+          <div class="robot-hero__sprite-rig" aria-hidden="true">
+            <div class="robot-hero__sprite robot-hero__sprite--a is-active" data-robot-sprite></div>
+            <div class="robot-hero__sprite robot-hero__sprite--b" data-robot-sprite></div>
+          </div>
         </div>
-        <div class="robot-hero__interaction" aria-hidden="true"><span></span><b>Move to make eye contact</b><small>Mouse / touch</small></div>
+        <div class="robot-hero__interaction" aria-hidden="true"><span></span><b>Move to direct its gaze</b><small>16 rendered poses · mouse / touch</small></div>
         <div class="robot-hero__status" role="group" aria-label="AI practice overview"><span><b>01</b> Strategy</span><span><b>02</b> Agent architecture</span><span><b>03</b> Intelligent products</span><span class="robot-hero__availability">Available for ambitious AI work</span></div>
       </div>
     </section>

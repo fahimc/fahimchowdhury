@@ -48,52 +48,64 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 
 const robotHero = document.querySelector('[data-robot-hero]');
 const robotStage = robotHero?.querySelector('[data-robot-stage]');
+const robotSprites = robotHero ? [...robotHero.querySelectorAll('[data-robot-sprite]')] : [];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (robotHero && robotStage && !reducedMotion) {
-  const current = { x: 0, y: 0 };
-  const target = { x: 0, y: 0 };
-  let motionFrame;
+if (robotHero && robotStage && robotSprites.length === 2 && !reducedMotion) {
+  const positions = ['0%', '33.3333%', '66.6667%', '100%'];
+  const keyboardLook = { x: 0, y: -0.12 };
+  let activeSprite = 0;
+  let currentFrame = '2:1';
+  let pendingLook;
+  let directionFrame;
   let touchReset;
 
-  const renderRobot = () => {
-    current.x += (target.x - current.x) * 0.14;
-    current.y += (target.y - current.y) * 0.14;
-    robotHero.style.setProperty('--head-x', `${current.x * 18}px`);
-    robotHero.style.setProperty('--head-y', `${current.y * 10}px`);
-    robotHero.style.setProperty('--head-ry', `${current.x * 9}deg`);
-    robotHero.style.setProperty('--head-rx', `${current.y * -6}deg`);
-    robotHero.style.setProperty('--head-rz', `${current.x * -1.5}deg`);
-    robotHero.style.setProperty('--hero-glow-x', `${50 + current.x * 28}%`);
-    robotHero.style.setProperty('--hero-glow-y', `${45 + current.y * 22}%`);
-    if (Math.abs(target.x - current.x) > 0.002 || Math.abs(target.y - current.y) > 0.002) {
-      motionFrame = requestAnimationFrame(renderRobot);
-    } else {
-      motionFrame = undefined;
-    }
+  const axisFrame = (value) => {
+    if (value < -0.5) return 0;
+    if (value < 0) return 1;
+    if (value < 0.5) return 2;
+    return 3;
   };
 
-  const queueRobot = () => {
-    if (!motionFrame) motionFrame = requestAnimationFrame(renderRobot);
+  const renderDirection = () => {
+    directionFrame = undefined;
+    if (!pendingLook) return;
+    const { x, y } = pendingLook;
+    const column = axisFrame(x);
+    const row = axisFrame(y);
+    const frameKey = `${column}:${row}`;
+    robotHero.style.setProperty('--hero-glow-x', `${50 + x * 28}%`);
+    robotHero.style.setProperty('--hero-glow-y', `${45 + y * 22}%`);
+    if (frameKey === currentFrame) return;
+    const nextSprite = activeSprite === 0 ? 1 : 0;
+    robotSprites[nextSprite].style.setProperty('--frame-x', positions[column]);
+    robotSprites[nextSprite].style.setProperty('--frame-y', positions[row]);
+    robotSprites[nextSprite].classList.add('is-active');
+    robotSprites[activeSprite].classList.remove('is-active');
+    activeSprite = nextSprite;
+    currentFrame = frameKey;
+  };
+
+  const queueDirection = (x, y) => {
+    pendingLook = {
+      x: Math.max(-1, Math.min(1, x)),
+      y: Math.max(-1, Math.min(1, y)),
+    };
+    if (!directionFrame) directionFrame = requestAnimationFrame(renderDirection);
   };
 
   const lookAt = (clientX, clientY) => {
     const rect = robotHero.getBoundingClientRect();
-    target.x = Math.max(-1, Math.min(1, ((clientX - rect.left) / rect.width - 0.5) * 2));
-    target.y = Math.max(-1, Math.min(1, ((clientY - rect.top) / rect.height - 0.5) * 2));
-    queueRobot();
-  };
-
-  const resetRobot = () => {
-    target.x = 0;
-    target.y = 0;
-    queueRobot();
+    queueDirection(
+      ((clientX - rect.left) / rect.width - 0.5) * 2,
+      ((clientY - rect.top) / rect.height - 0.5) * 2,
+    );
   };
 
   robotHero.addEventListener('pointermove', (event) => {
     if (event.pointerType !== 'touch') lookAt(event.clientX, event.clientY);
   }, { passive: true });
   robotHero.addEventListener('pointerleave', (event) => {
-    if (event.pointerType !== 'touch') resetRobot();
+    if (event.pointerType !== 'touch') queueDirection(0.12, -0.12);
   });
   robotHero.addEventListener('touchmove', (event) => {
     const touch = event.touches[0];
@@ -101,17 +113,19 @@ if (robotHero && robotStage && !reducedMotion) {
   }, { passive: true });
   robotHero.addEventListener('touchend', () => {
     clearTimeout(touchReset);
-    touchReset = setTimeout(resetRobot, 700);
+    touchReset = setTimeout(() => queueDirection(0.12, -0.12), 700);
   }, { passive: true });
   robotStage.addEventListener('keydown', (event) => {
-    const movement = 0.25;
-    if (event.key === 'ArrowLeft') target.x = Math.max(-1, target.x - movement);
-    else if (event.key === 'ArrowRight') target.x = Math.min(1, target.x + movement);
-    else if (event.key === 'ArrowUp') target.y = Math.max(-1, target.y - movement);
-    else if (event.key === 'ArrowDown') target.y = Math.min(1, target.y + movement);
+    const movement = 0.34;
+    if (event.key === 'ArrowLeft') keyboardLook.x -= movement;
+    else if (event.key === 'ArrowRight') keyboardLook.x += movement;
+    else if (event.key === 'ArrowUp') keyboardLook.y -= movement;
+    else if (event.key === 'ArrowDown') keyboardLook.y += movement;
     else return;
     event.preventDefault();
-    queueRobot();
+    keyboardLook.x = Math.max(-1, Math.min(1, keyboardLook.x));
+    keyboardLook.y = Math.max(-1, Math.min(1, keyboardLook.y));
+    queueDirection(keyboardLook.x, keyboardLook.y);
   });
 }
 
