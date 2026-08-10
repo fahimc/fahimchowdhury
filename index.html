@@ -1,85 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Fahim Chowdhury is a London-based AI expert designing agentic systems, intelligent products, and practical AI strategy.">
-  <title>Fahim Chowdhury | AI expert & systems designer</title>
+  <meta name="description" content="Fahim Chowdhury designs AI strategy, agent systems, and intelligent products that create practical advantage.">
+  <meta name="theme-color" content="#07090d">
+  <title>Fahim Chowdhury | AI strategy, agents &amp; intelligent products</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
 </head>
-<body>
-  <header class="site-header shell">
-    <a class="wordmark" href="index.html" aria-label="Fahim Chowdhury home"><span>FC</span> fahimchowdhury</a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="#approach">Approach</a>
-      <a href="blog.html">Blog <span class="arrow">↗</span></a>
+<body class="portfolio-v2">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <header class="site-header c-header c-shell">
+    <a class="wordmark c-brand" href="index.html" aria-label="Fahim Chowdhury home"><span>FC</span> fahimchowdhury</a>
+    <nav class="nav c-nav" aria-label="Main navigation">
+      <a href="services.html">Services</a><a href="#work">Work</a><a href="blog.html">Blog</a>
     </nav>
-    <a class="button button-small button-dark" href="mailto:hello@fahimchowdhury.com">Let's talk <span>↗</span></a>
+    <a class="button c-button c-button--primary" href="mailto:hello@fahimchowdhury.com">Start a project <span>↗</span></a>
   </header>
 
   <main>
-    <section class="hero shell">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> AI expert · strategist · systems designer</p>
-        <h1>AI with<br><em>judgement.</em></h1>
-        <p class="hero-intro">I turn frontier models into useful products, trusted agents, and intelligent workflows that create measurable advantage.</p>
-        <div class="hero-actions">
-          <a class="button button-blue" href="#work">See selected work <span>↓</span></a>
-          <a class="text-link" href="blog.html">Read the thinking <span>↗</span></a>
+    <section class="v2-hero c-shell">
+      <div class="v2-hero__copy reveal">
+        <p class="c-kicker">AI strategist · systems designer · London</p>
+        <h1 class="v2-hero__title">AI that earns<br>its <em>place.</em></h1>
+        <p class="v2-hero__dek">I turn complex opportunities into AI products, agent systems, and intelligent workflows people can trust—and organisations can actually operate.</p>
+        <div class="v2-hero__actions">
+          <a class="c-button c-button--primary" href="#work">Explore selected work <span>↓</span></a>
+          <a class="c-button c-button--ghost" href="services.html">View services <span>↗</span></a>
         </div>
       </div>
-      <div class="hero-visual" data-parallax aria-label="An orchestrated network of specialist AI systems">
-        <img src="assets/ai-systems-hero.webp" alt="Luminous AI system nodes converging around a central intelligence" width="1536" height="1024" fetchpriority="high">
-        <div class="visual-hud hud-top"><span>System / 01</span><b>Orchestrated intelligence</b></div>
-        <div class="visual-hud hud-bottom"><i></i><span>Strategy → agents → outcomes</span></div>
+      <div class="v2-hero__visual reveal" data-parallax role="img" aria-label="Orchestrated AI systems visual">
+        <img src="assets/ai-systems-hero.webp" alt="A luminous network of specialist AI systems converging around a central intelligence" width="1536" height="1024" fetchpriority="high">
+        <div class="v2-hero__badge"><div><span>Operating principle</span><strong>Orchestrate intelligence</strong></div><span>Human judgement / always on</span></div>
       </div>
-      <div class="hero-foot">
-        <span>Based in London · working globally</span>
-        <span class="scroll-cue">Scroll to explore <b>↓</b></span>
-      </div>
-    </section>
-
-    <section class="expertise-rail" aria-label="Areas of AI expertise"><div class="shell expertise-track"><span>AI strategy</span><i>✦</i><span>Agent architecture</span><i>✦</i><span>Generative AI products</span><i>✦</i><span>Responsible delivery</span><i>✦</i><span>Human-centred systems</span></div></section>
-
-    <section class="statement section shell" id="approach">
-      <div class="section-kicker">01 / The point of view</div>
-      <div class="statement-content">
-        <h2>AI is not the product.<br><span>The <i>possibility</i> is.</span></h2>
-        <p>Technology is only useful when it changes what a person can do. My work sits between the sharp edge of emerging AI and the very human details that make a solution stick.</p>
-        <a class="text-link" href="blog.html">A few notes on making AI useful <span>↗</span></a>
+      <div class="v2-hero__foot reveal" role="group" aria-label="Practice overview">
+        <div class="v2-hero__fact"><b>Focus</b>Applied generative AI</div>
+        <div class="v2-hero__fact"><b>Specialism</b>Agentic products</div>
+        <div class="v2-hero__fact"><b>Approach</b>Strategy → shipped system</div>
+        <div class="v2-hero__fact"><b>Working from</b>London · globally</div>
       </div>
     </section>
 
-    <section class="services section shell">
-      <div class="section-kicker">02 / What I do</div>
-      <div class="service-grid">
-        <article class="service-card"><span class="service-number">01</span><h3>Find the signal</h3><p>Clarify where AI can create an unfair advantage, then make the case simple enough to act on.</p><span class="service-tag">AI strategy</span></article>
-        <article class="service-card service-card-highlight"><span class="service-number">02</span><h3>Design the useful thing</h3><p>Shape copilots, workflows, and intelligent experiences around real behavior, not feature checklists.</p><span class="service-tag">Product design</span></article>
-        <article class="service-card"><span class="service-number">03</span><h3>Make it real</h3><p>Move from a convincing prototype to a trusted solution with the right guardrails and feedback loops.</p><span class="service-tag">AI solutions</span></article>
+    <section class="c-ticker" aria-label="Areas of expertise"><div class="c-ticker__track"><span>AI strategy</span><i>✦</i><span>Agent architecture</span><i>✦</i><span>Generative AI products</span><i>✦</i><span>Evaluation &amp; guardrails</span><i>✦</i><span>Human-centred automation</span><i>✦</i><span>AI strategy</span><i>✦</i><span>Agent architecture</span><i>✦</i><span>Generative AI products</span><i>✦</i><span>Evaluation &amp; guardrails</span><i>✦</i><span>Human-centred automation</span><i>✦</i></div></section>
+
+    <section class="c-section c-shell" id="services">
+      <div class="v2-section-head reveal"><div><p class="c-kicker">01 / Services</p><h2 class="c-heading">From possibility<br>to <em>practice.</em></h2></div><p class="c-copy">I work across the full AI product journey: finding the valuable problem, shaping the system, proving it quickly, and creating the conditions for adoption.</p></div>
+      <div class="service-menu">
+        <a class="service-row reveal" href="services.html#strategy"><span class="service-row__no">01</span><h3>AI opportunity &amp; strategy</h3><p>Find where AI creates genuine leverage, frame the operating model, and leave with a prioritised roadmap leaders can act on.</p><div class="service-row__meta"><span class="c-chip">Opportunity map</span><span class="c-chip">Roadmap</span><span class="c-chip">Governance</span></div><span class="service-row__arrow">↗</span></a>
+        <a class="service-row reveal" href="services.html#products"><span class="service-row__no">02</span><h3>Agentic product design</h3><p>Design copilots, RAG experiences, and multi-agent workflows around real user behaviour, clear control, and measurable quality.</p><div class="service-row__meta"><span class="c-chip">Product definition</span><span class="c-chip">Agent UX</span><span class="c-chip">Evals</span></div><span class="service-row__arrow">↗</span></a>
+        <a class="service-row reveal" href="services.html#delivery"><span class="service-row__no">03</span><h3>Prototype to production</h3><p>Turn a high-value hypothesis into a working, testable system with the architecture, integrations, guardrails, and feedback loops to scale.</p><div class="service-row__meta"><span class="c-chip">Rapid prototype</span><span class="c-chip">Architecture</span><span class="c-chip">Launch plan</span></div><span class="service-row__arrow">↗</span></a>
+        <a class="service-row reveal" href="services.html#enablement"><span class="service-row__no">04</span><h3>AI enablement</h3><p>Give teams the literacy, workflows, and practical playbooks to adopt AI with confidence instead of accumulating disconnected tools.</p><div class="service-row__meta"><span class="c-chip">Workshops</span><span class="c-chip">Playbooks</span><span class="c-chip">Adoption</span></div><span class="service-row__arrow">↗</span></a>
       </div>
     </section>
 
-    <section class="work section shell" id="work">
-      <div class="section-heading"><div class="section-kicker">03 / Selected work</div><span class="mono-label">Recent experiments & collaborations</span></div>
-      <div class="work-list">
-        <article class="work-item"><div class="work-meta"><span>01</span><span>Knowledge systems</span></div><div class="work-main"><h3>From buried expertise<br>to an <em>answer engine.</em></h3><p>A grounded AI assistant that helps a global team find the decision behind the document.</p><a href="mailto:hello@fahimchowdhury.com?subject=Knowledge%20systems" aria-label="Discuss knowledge systems project">View case <span>↗</span></a></div><div class="work-art art-blue"><span>ask<br>better<br>questions</span></div></article>
-        <article class="work-item"><div class="work-meta"><span>02</span><span>Customer experience</span></div><div class="work-main"><h3>A calmer way to<br>navigate <em>complexity.</em></h3><p>Reimagining service journeys with an AI layer that knows when to help and when to get out of the way.</p><a href="mailto:hello@fahimchowdhury.com?subject=Customer%20experience" aria-label="Discuss customer experience project">View case <span>↗</span></a></div><div class="work-art art-lime"><span>less<br>friction<br>more flow</span></div></article>
+    <section class="c-section c-shell" id="work">
+      <div class="v2-section-head reveal"><div><p class="c-kicker">02 / Selected work</p><h2 class="c-heading">Systems with<br><em>consequence.</em></h2></div><p class="c-copy">Representative engagements showing how research, product thinking, and intelligent system design combine around a meaningful outcome.</p></div>
+      <div class="work-grid">
+        <article class="c-card work-card reveal"><div class="work-card__top"><span class="c-chip">Knowledge systems</span><span class="c-chip">01 / Case</span></div><h3>From buried expertise to a decision engine.</h3><p>A grounded assistant that finds the thinking behind the document, makes provenance visible, and helps a global team move with shared context.</p><div class="work-card__art" aria-hidden="true"></div></article>
+        <article class="c-card work-card work-card--small reveal"><div class="work-card__top"><span class="c-chip">Customer experience</span><span class="c-chip">02 / Case</span></div><h3>Less friction. More confident action.</h3><p>An AI service layer designed to recognise intent, simplify complexity, and know when human expertise should take over.</p><div class="work-card__art" aria-hidden="true"></div></article>
       </div>
     </section>
 
-    <section class="about section shell">
-      <div class="section-kicker">04 / A little context</div>
-      <div class="about-grid"><div class="about-pull">The best AI work is a conversation between what is <em>possible</em> and what is <em>worth doing.</em></div><div class="about-copy"><p>I’m Fahim, an AI specialist focused on the space where technology, product, and people meet. I work with teams who want a clear-eyed partner, not another layer of jargon.</p><p>My lens is practical: start with the user, keep the loop short, and build enough trust for the idea to leave the slide deck.</p><a class="button button-dark" href="mailto:hello@fahimchowdhury.com">Start a conversation <span>↗</span></a></div></div>
+    <section class="c-section c-shell" id="approach">
+      <div class="v2-section-head reveal"><div><p class="c-kicker">03 / How I work</p><h2 class="c-heading">A short loop.<br>A high <em>bar.</em></h2></div><p class="c-copy">Every engagement is built to reduce uncertainty quickly while protecting the judgement, trust, and operational detail that make AI useful.</p></div>
+      <div class="process-grid">
+        <article class="c-card process-step reveal"><span class="process-step__no">01 / Frame</span><h3>Make the problem sharp.</h3><p>Align the user need, commercial value, risk, and success signal before choosing technology.</p><span class="c-chip">Discovery</span></article>
+        <article class="c-card process-step reveal"><span class="process-step__no">02 / Prove</span><h3>Create evidence early.</h3><p>Prototype the decisive interaction and test the assumptions most likely to break the idea.</p><span class="c-chip">Experiment</span></article>
+        <article class="c-card process-step reveal"><span class="process-step__no">03 / Ship</span><h3>Engineer the trust.</h3><p>Build context, evaluation, observability, and human control into the product—not around it.</p><span class="c-chip">Delivery</span></article>
+        <article class="c-card process-step reveal"><span class="process-step__no">04 / Learn</span><h3>Keep the loop alive.</h3><p>Use real behaviour and quality signals to improve the system after the launch moment.</p><span class="c-chip">Adoption</span></article>
+      </div>
     </section>
 
-    <section class="writing section shell"><div class="section-heading"><div class="section-kicker">05 / From the notebook</div><a class="text-link" href="blog.html">All writing <span>↗</span></a></div><div class="writing-grid"><a class="writing-card writing-card-featured" href="article-freebuff.html"><span class="post-type">Tool review · 12 min read</span><h3>FreeBuff proves free AI coding can have serious architecture</h3><p>Inside the multi-agent system—and the ad-supported economics—that make a zero-dollar coding agent possible.</p><span class="post-date">August 09, 2026</span></a><a class="writing-card" href="article-less-impressive.html"><span class="post-type">Perspective · 6 min read</span><h3>The quiet power of making AI less impressive</h3><p>Why the best intelligent products often feel like they are barely there.</p><span class="post-date">May 14, 2024</span></a><a class="writing-card" href="article-copilots.html"><span class="post-type">Field notes · 8 min read</span><h3>Copilots are a design problem before they are a tech problem</h3><p>A practical framework for building assistance people can trust.</p><span class="post-date">April 02, 2024</span></a></div></section>
+    <section class="c-section c-shell">
+      <div class="belief"><blockquote class="belief__quote reveal">The model is a capability.<br>The product is the <em>judgement around it.</em></blockquote><div class="belief__copy reveal"><p>I’m Fahim, an AI specialist working where strategy, product, and people meet. I help teams make confident choices about emerging technology, then turn those choices into useful systems.</p><p>My standard is practical: a clear user, an observable outcome, a trustworthy loop, and no theatre that cannot survive contact with the real world.</p><div class="belief__points"><div class="belief__point">Based in London <span>Working globally</span></div><div class="belief__point">Technology lens <span>Model-agnostic</span></div><div class="belief__point">Delivery style <span>Hands-on partner</span></div></div></div></div>
+    </section>
+
+    <section class="c-section c-shell" id="insights">
+      <div class="v2-section-head reveal"><div><p class="c-kicker">04 / Field notes</p><h2 class="c-heading">Ideas for<br><em>useful AI.</em></h2></div><a class="c-button c-button--ghost" href="blog.html">View all insights <span>↗</span></a></div>
+      <div class="insight-grid">
+        <a class="c-card insight-card reveal" href="article-freebuff.html"><span class="c-chip">Tool review</span><h3>FreeBuff proves free AI coding can have serious architecture</h3><p>Inside the orchestration and economics of a zero-dollar coding agent.</p><div class="insight-card__foot"><span>12 min read</span><span>↗</span></div></a>
+        <a class="c-card insight-card reveal" href="article-less-impressive.html"><span class="c-chip">Perspective</span><h3>The quiet power of making AI less impressive</h3><p>Why the best intelligent products often feel like they are barely there.</p><div class="insight-card__foot"><span>6 min read</span><span>↗</span></div></a>
+        <a class="c-card insight-card reveal" href="article-copilots.html"><span class="c-chip">Field notes</span><h3>Copilots are a design problem before a tech problem</h3><p>A practical framework for building assistance people can trust.</p><div class="insight-card__foot"><span>8 min read</span><span>↗</span></div></a>
+      </div>
+    </section>
+
+    <section class="c-section c-shell" id="contact"><div class="contact-stage reveal"><h2>Have a problem<br>worth making <em>possible?</em></h2><div><p>Bring the messy brief, the bold idea, or the AI initiative that needs a clearer shape.</p><a class="c-button" href="mailto:hello@fahimchowdhury.com">Start a conversation <span>↗</span></a></div></div></section>
   </main>
 
-  <footer class="footer shell"><a class="wordmark" href="index.html"><span>FC</span> fahimchowdhury</a><p>Thoughtful AI for the real world.</p><div class="footer-links"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/fahimc" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:hello@fahimchowdhury.com">Email ↗</a></div><small>© <span data-year></span> Fahim Chowdhury</small></footer>
+  <footer class="c-footer c-shell"><span>© <span data-year></span> Fahim Chowdhury · Thoughtful AI for the real world.</span><div class="c-footer__links"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/fahimc" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:hello@fahimchowdhury.com">Email ↗</a></div></footer>
   <script src="script.js"></script>
 </body>
 </html>

@@ -31,7 +31,7 @@ if (header && headerButton) {
 
 document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-const revealTargets = document.querySelectorAll('.section, .work-item, .writing-card, .post-row, .architecture-stage');
+const revealTargets = document.querySelectorAll('.section, .work-item, .writing-card, .post-row, .architecture-stage, .reveal');
 if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   revealTargets.forEach((el) => el.classList.add('reveal-ready'));
   const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -42,6 +42,8 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     });
   }, { threshold: 0.12 });
   revealTargets.forEach((el) => revealObserver.observe(el));
+} else {
+  revealTargets.forEach((el) => el.classList.add('is-visible'));
 }
 
 const parallax = document.querySelector('[data-parallax]');
@@ -57,6 +59,21 @@ if (parallax && window.matchMedia('(pointer: fine)').matches && !window.matchMed
     parallax.style.setProperty('--tilt-x', '0deg');
     parallax.style.setProperty('--tilt-y', '0deg');
   });
+}
+
+const progress = document.querySelector('.scroll-progress');
+if (progress) {
+  let progressFrame;
+  const updateProgress = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const percentage = scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0;
+    progress.style.setProperty('--scroll-progress', `${percentage}%`);
+    progressFrame = undefined;
+  };
+  window.addEventListener('scroll', () => {
+    if (!progressFrame) progressFrame = requestAnimationFrame(updateProgress);
+  }, { passive: true });
+  updateProgress();
 }
 
 const form = document.querySelector('#subscribe-form');

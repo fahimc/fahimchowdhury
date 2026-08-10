@@ -1,6 +1,20 @@
+def ArticleCard type title summary href
+  Card
+    Badge $type
+    Heading level=2 $title
+    Text $summary
+    Link href=$href "Read article"
+
 Page FahimBlog
   Stack gap=lg
-    Heading level=1 "Blog"
-    Text "A notebook for ideas about AI, product, and the small choices that make new technology feel human."
-    Heading level=2 "The quiet power of making AI less impressive"
-    Text "The most valuable AI often lowers the effort between a person and a good decision."
+    Section
+      Badge "Notes from the edge of useful"
+      Heading level=1 "Insights"
+      Text "Ideas about AI, product, and the choices that make new technology feel human."
+    Section
+      ArticleCard type="Tool review · 12 min" title="FreeBuff proves free AI coding can have serious architecture" summary="Inside the orchestration and economics of a zero-dollar coding agent." href="article-freebuff.html"
+    Section
+      Grid columns=3 gap=md
+        ArticleCard type="Perspective · 6 min" title="The quiet power of making AI less impressive" summary="Why useful intelligence often feels quiet." href="article-less-impressive.html"
+        ArticleCard type="Field notes · 8 min" title="Copilots are a design problem before a tech problem" summary="A framework for assistance people can trust." href="article-copilots.html"
+        ArticleCard type="Playbook · 5 min" title="Ask what to make possible" summary="Three prompts for a sharper AI conversation." href="article-possibility.html"

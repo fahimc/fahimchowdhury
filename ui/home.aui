@@ -1,7 +1,47 @@
-Page FahimHome
+def ServiceCard number title description
+  Card
+    Text $number
+    Heading level=3 $title
+    Text $description
+    Link href="services.html" "Explore service"
+
+def WorkCard category title description
+  Card
+    Badge $category
+    Heading level=3 $title
+    Text $description
+
+def InsightCard type title href
+  Card
+    Badge $type
+    Heading level=3 $title
+    Link href=$href "Read insight"
+
+Page FahimPortfolio
   Stack gap=lg
-    Heading level=1 "Make AI feel obvious."
-    Text "I help ambitious teams turn messy, high-value problems into AI products people actually want to use."
-    Button variant=primary action=work "See selected work"
-    Heading level=2 "AI is not the product. The possibility is."
-    Text "Technology is only useful when it changes what a person can do."
+    Section
+      Badge "AI strategist · systems designer · London"
+      Heading level=1 "AI that earns its place."
+      Text "I turn complex opportunities into AI products, agent systems, and intelligent workflows people can trust."
+      Row gap=md
+        Link href="#work" "Explore selected work"
+        Link href="services.html" "View services"
+      Image src="assets/ai-systems-hero.webp" alt="Orchestrated AI systems"
+    Section
+      Heading level=2 "From possibility to practice."
+      Grid columns=2 gap=md
+        ServiceCard number="01" title="AI opportunity & strategy" description="Find where AI creates genuine leverage and leave with a roadmap leaders can act on."
+        ServiceCard number="02" title="Agentic product design" description="Design copilots and multi-agent workflows around control, context, and quality."
+        ServiceCard number="03" title="Prototype to production" description="Turn a valuable hypothesis into a testable, trustworthy system."
+        ServiceCard number="04" title="AI enablement" description="Give teams the literacy, workflows, and playbooks to adopt AI confidently."
+    Section
+      Heading level=2 "Systems with consequence."
+      Grid columns=2 gap=md
+        WorkCard category="Knowledge systems" title="From buried expertise to a decision engine." description="A grounded assistant that makes provenance and shared context visible."
+        WorkCard category="Customer experience" title="Less friction. More confident action." description="An AI service layer that recognises intent and knows when humans should take over."
+    Section
+      Heading level=2 "Ideas for useful AI."
+      Grid columns=3 gap=md
+        InsightCard type="Tool review" title="FreeBuff proves free AI coding can have serious architecture" href="article-freebuff.html"
+        InsightCard type="Perspective" title="The quiet power of making AI less impressive" href="article-less-impressive.html"
+        InsightCard type="Field notes" title="Copilots are a design problem before a tech problem" href="article-copilots.html"

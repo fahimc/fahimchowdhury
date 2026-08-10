@@ -1,0 +1,18 @@
+{
+  "name": "fahimchowdhury-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compile:aui": "node scripts/compile-aui.mjs",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run compile:aui && npm run typecheck"
+  },
+  "dependencies": {
+    "react": "19.2.8"
+  },
+  "devDependencies": {
+    "@codedia/parser": "0.2.1",
+    "@types/react": "19.2.18",
+    "typescript": "7.0.2"
+  }
+}
